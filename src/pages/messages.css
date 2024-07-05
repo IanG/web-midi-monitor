@@ -1,0 +1,65 @@
+.badge.midi-message-source {
+    border: 1px solid var(--bs-body-color);
+    color: var(--bs-body-color);
+    background-color: transparent;
+}
+
+.badge.music-note {
+    border: 1px solid #ff69b4;
+    color: #ff69b4;
+    background-color: transparent;
+    font-family: Monospace;
+}
+
+.badge.midi-message-note-on {
+    border: 1px solid #00bc8c;
+    color: #00bc8c;
+    background-color: transparent;
+}
+
+.badge.midi-message-note-off {
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    background-color: transparent;
+}
+
+.badge.midi-message-control-change {
+    border: 1px solid #f39c12;
+    color: #f39c12;
+    background-color: transparent;
+}
+.badge.midi-message-polyphonic-key-pressure {
+    border: 1px solid #01694e;
+    color: #01694e;
+    background-color: transparent;
+}
+
+.badge.midi-message-program-change {
+    border: 1px solid #3498db;
+    color: #3498db;
+    background-color: transparent;
+}
+
+.badge.midi-message-pitch-bend-change {
+    border: 1px solid #ac98e3;
+    color: #ac98e3;
+    background-color: transparent;
+}
+
+.badge.midi-message-undefined {
+    border: 1px solid #888;
+    color: #888;
+    background-color: transparent;
+}
+
+.progress.midi-velocity-pressure {
+    margin-top: 2px;
+    height: 23px;
+    border: 1px solid var(--bs-gray);
+    background-color: var(--bs-progress-bg);
+}
+
+.progress.midi-velocity-pressure .progress-bar {
+    background-color: var(--bs-green)
+}
+

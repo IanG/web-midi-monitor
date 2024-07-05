@@ -1,0 +1,18 @@
+.reference-modal {
+    min-width: 90%;
+    max-width: 90%;
+}
+
+.reference-modal-height {
+    min-height: 700px;
+    max-height: 700px
+}
+
+.reference-table-container {
+    height: 480px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--bs-border-color);
+    overflow: scroll;
+}
