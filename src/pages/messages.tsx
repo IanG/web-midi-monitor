@@ -216,7 +216,7 @@ export default function Messages() {
                     <th style={{width: '150px'}}>Message Type</th>
                     <th style={{width: '70px'}}>Note #</th>
                     <th style={{width: '70px'}}>Note ♫</th>
-                    <th style={{width: '150px'}}>Velocity/Pressure</th>
+                    <th style={{width: '160px'}}>Velocity/Pressure</th>
                     <th>Message Data <span
                         style={{
                             float: "right",

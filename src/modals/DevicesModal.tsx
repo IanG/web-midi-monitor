@@ -20,10 +20,10 @@ export default function DevicesModal({visible, setVisible}: DevicesModalProps) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h1>Input Devices</h1>
+                <h1>Input Devices {inputs.length > 0 && `(${inputs.length})`}</h1>
 
                 {inputs.length > 0 ? (
-                    <Table>
+                    <Table borderless>
                         <thead>
                         <tr>
                             <th>Manufacturer</th>
@@ -45,10 +45,10 @@ export default function DevicesModal({visible, setVisible}: DevicesModalProps) {
 
 
 
-                <h1>Output Devices ({outputs.length})</h1>
+                <h1>Output Devices {outputs.length > 0 && `(${outputs.length})`}</h1>
 
                 {outputs.length > 0 ? (
-                    <Table >
+                    <Table borderless>
                         <thead>
                         <tr>
                             <th>Manufacturer</th>

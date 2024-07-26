@@ -1,6 +1,6 @@
 
 import {NavLink} from "react-router-dom";
-import {Container, Nav, Navbar, Tooltip, OverlayTrigger} from "react-bootstrap";
+import {Container, Nav, Navbar, Tooltip, OverlayTrigger, Button} from "react-bootstrap";
 import {OverlayDelay} from "react-bootstrap/OverlayTrigger";
 
 import {useState} from "react";
@@ -8,6 +8,8 @@ import DevicesModal from "../modals/DevicesModal.tsx";
 import AboutModal from "../modals/AboutModal.tsx";
 import ReferenceModal from "../modals/ReferenceModal.tsx";
 import ThemeSwitcher from "./ThemeSwitcher.tsx";
+import {useMIDIInputs, useMIDIOutputs} from "@react-midi/hooks";
+import {Output} from "@react-midi/hooks/dist/types";
 
 type NavigationBarProps = {
     showMIDINavigation: boolean;
@@ -18,6 +20,9 @@ export default function NavigationBar({ showMIDINavigation }: NavigationBarProps
     const[ aboutModalVisible, setAboutModalVisible ] = useState<boolean>(false);
     const[ referenceModalVisible, setReferenceModalVisible ] = useState<boolean>(false);
     const[ devicesModalVisible, setDevicesModalVisible ] = useState<boolean>(false);
+
+    const { outputs} = useMIDIOutputs();
+    const { inputs} = useMIDIInputs();
 
     const renderAboutTooltip = (props :any) => (
         <Tooltip id="button-tooltip" {...props}>
@@ -54,6 +59,22 @@ export default function NavigationBar({ showMIDINavigation }: NavigationBarProps
         hide: 50
     }
 
+    function sendControlMessage(): void {
+        console.log("Sending control message...");
+
+        const outputDevice: number = 1;
+        const channel :number = 0;
+        // outputs[outputDevice].send([0xB0 | (channel - 1), 118, 127]);
+
+        outputs[outputDevice].send([0x90, 0x5E, 0x7F]);
+        outputs[outputDevice].send([0x90, 0x5D, 0x00]);
+        outputs[outputDevice].send([0xF2, 0x00, 0x00]);
+        outputs[outputDevice].send([0xFA, 0x00, 0x00]);
+
+        // outputs[outputDevice].send([0x90, 0x5D, 0x00]);
+        // outputs[outputDevice].send([0xFA]);
+    }
+
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary ps-0" sticky="top" fixed="top" bg="dark" >
@@ -72,6 +93,7 @@ export default function NavigationBar({ showMIDINavigation }: NavigationBarProps
                         >
                             {showMIDINavigation &&
                                 <>
+                                    {/*<Button onClick={() => sendControlMessage()}>Click Me</Button>*/}
                                     <OverlayTrigger placement="bottom" delay={defaultOverLayDelay} overlay={renderMessagesTooltip}>
                                         <Nav.Link as={NavLink} to="/messages" aria-label="Messages>">Messages</Nav.Link>
                                     </OverlayTrigger>
