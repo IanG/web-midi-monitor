@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+# web-midi-monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an experiment which makes use of the [Web Midi API](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API).
 
-Currently, two official plugins are available:
+This React application allows you to monitor [MIDI](https://en.wikipedia.org/wiki/MIDI) messages from MIDI-enabled devices that are connected to your computer.  The application decodes each 3 byte message that is received and translates the message to what it really means based upon the MIDI specification.  The application can show:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Message Timestamp
+- Source Device
+- The RAW 3 bytes from the MIDI message in either binary, decimal or hexadecimal
+- The MIDI channel
+- The MIDI message type
+- The MIDI note number (if the message is a note on/off message)
+- The Music ♫ (octave, note sharp/flat)
+- The Velocity of the note
+- A Textual representation of the message using information from the MIDI specification
 
-## Expanding the ESLint configuration
+This application can serve as a useful tool for diagnosing MIDI problems and understanding what MIDI messages are sent by physical buttons that exist on your device (e.g. the 'play' button transport control, the pitch wheel etc.)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The application `Devices` modal can be used to show what devices are connected.
+The application `Reference` model dynamically creates the MIDI message and control change message definitions from internal data required to decode any message that is received.
+The application `About` modal shows browser details (not all browsers support MIDI) along with useful MIDI-related links.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
