@@ -73,7 +73,7 @@ export default function NavigationBar({ showMIDINavigation }: NavigationBarProps
                             {showMIDINavigation &&
                                 <>
                                     <OverlayTrigger placement="bottom" delay={defaultOverLayDelay} overlay={renderMessagesTooltip}>
-                                        <Nav.Link as={NavLink} to="/messages" aria-label="Messages>">Messages</Nav.Link>
+                                        <Nav.Link as={NavLink} to={"/messages"} aria-label="Messages>">Messages</Nav.Link>
                                     </OverlayTrigger>
                                     <OverlayTrigger placement="bottom" delay={defaultOverLayDelay} overlay={renderDevicesTooltip}>
                                         <a className="nav-link" style={{cursor: "pointer"}} onClick={() => {setDevicesModalVisible(true);}}>Devices</a>
